@@ -3,7 +3,10 @@
 
 POLYMORPHIC ASSOCIATIONS:
 
+* The entities in multiple inheritance can use polymorphic associations. 
+
 Posts, images & videos - all are commentable.
+
 FOR GENERATING MODELS:- 
 * rails g model Post title:string description:string
 * rails g model Photo caption:string url:string
@@ -14,3 +17,23 @@ IN MODELS:-
 * Post,photo,video has- has_many :comments, :as => :commentable
 USE:-
 * Create a post & then - Post.first.comments.create(...)
+
+
+SINGLE TABLE INHERITANCE:
+
+* The entities in Hierarchical inheritance can use this associations.
+
+User can be Developer,Tester,Client
+
+FOR GENERATING MODELS:
+* rails g model User name:string email:string phone:string
+* rails g migration AddTypeToUser (add type as a string)
+( Also add default value so that if created via User.create(); record will be accessible.)
+* create model files for Developer,Tester,Client by inheriting User.
+
+USE:- 
+* create entries for developer, tester , client using create.
+* You can access Developer.all to see all developers.
+* likewise you can access the rest of models. 
+
+
